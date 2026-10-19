@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Water Within Reach</title>
+  <meta name="description" content="How many South African households have access to piped water, province by province. Data: Stats SA General Household Survey 2025.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. HERO — full-width photo with the headline over it -->
+  <header class="hero">
+    <img class="hero__img" src="images/02-dam-spillway.jpg" alt="Water rushing over a dam spillway">
+    <div class="hero__text container">
+      <p class="eyebrow">Basic services · South Africa</p>
+      <h1>Water within reach</h1>
+      <p class="lede">After more than two decades of measurement, how many households can turn on a tap?</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 2. KEY FIGURE — the one number to remember -->
+    <section class="container section stat">
+      <div class="stat__number">87.4%</div>
+      <div class="stat__text">
+        <p>of South African households had access to piped or tap water in 2025, in the dwelling, in the yard or at a communal tap.</p>
+        <p class="muted">In 2002, when the survey began, the figure was 84.4%. That is a rise of three percentage points in 23 years.</p>
+      </div>
+    </section>
+
+    <!-- 3. CHART — interactive, built by js/chart.js from js/data.js -->
+    <section class="container section" aria-labelledby="chart-title">
+      <h2 id="chart-title">The provincial divide</h2>
+      <p class="muted">Households with access to piped or tap water, by province, 2025. The amber line marks the national figure.</p>
+
+      <div class="chart-controls" role="group" aria-label="Sort the chart">
+        <button type="button" data-sort="value" aria-pressed="true">Highest to lowest</button>
+        <button type="button" data-sort="name" aria-pressed="false">A–Z</button>
+      </div>
+
+      <figure class="chart" id="chart" aria-describedby="chart-source"></figure>
+      <p class="source" id="chart-source">Source: Statistics South Africa, General Household Survey 2025 (P0318), Figure 9.1. Free State, North West and Mpumalanga calculated from Table 9.1.</p>
+    </section>
+
+    <!-- 4. PHOTO SERIES — the graded Photoshop set -->
+    <section class="section section--tint" aria-labelledby="gallery-title">
+      <div class="container">
+        <h2 id="gallery-title">The infrastructure behind the tap</h2>
+        <p class="muted">Dams, pipes, towers and treatment works carry water from source to household.</p>
+      </div>
+      <ul class="gallery container">
+        <li><img src="images/01-water-tower.jpg" alt="Water tower against the sky" loading="lazy"></li>
+        <li><img src="images/03-water-pipes.jpg" alt="Water flowing from pipes" loading="lazy"></li>
+        <li><img src="images/04-tap-water.jpg" alt="A tap by a window" loading="lazy"></li>
+        <li><img src="images/05-reservoir.jpg" alt="Reservoir tank on a green hillside" loading="lazy"></li>
+        <li><img src="images/06-pipeline.jpg" alt="Pipeline" loading="lazy"></li>
+        <li><img src="images/07-water-treatment.jpg" alt="Water treatment works seen from above" loading="lazy"></li>
+        <li><img src="images/08-storm-drain.jpg" alt="Flooded street after a storm" loading="lazy"></li>
+        <li><img src="images/09-south-africa-dam.jpg" alt="Dam surrounded by mountains" loading="lazy"></li>
+        <li><img src="images/10-irrigation.jpg" alt="Irrigation pipe in a field" loading="lazy"></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- 5. FOOTER — sources and photo credits -->
+  <footer class="container footer">
+    <h2>Sources and credits</h2>
+    <p>Data: Statistics South Africa, <em>General Household Survey 2025</em> (Statistical release P0318).</p>
+    <p>Photographs from Unsplash, used under the Unsplash Licence, colour graded and retouched by Naughlan:
+      Joe Dudeck, shiva Mangena, Hush Naidoo Jade Photography, Edrin Spahiu, Zobia Shakar, Wolfgang Weiser,
+      Ivan Bandura, Andrew Wang, Simon Hurry, Being Organic in EU.</p>
+    <p class="muted">Designed and built by Naughlan in HTML, CSS and JavaScript. No frameworks.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/chart.js"></script>
+</body>
+</html>

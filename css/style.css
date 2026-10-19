@@ -1,0 +1,171 @@
+/* ==========================================================
+   Water Within Reach — styles
+   Same fonts, palette and grid as the rest of the portfolio.
+   ========================================================== */
+
+/* --- Design tokens: change a colour here and it changes everywhere --- */
+:root {
+  --navy:   #1F3A5F;   /* headings, bars, primary */
+  --amber:  #D98E04;   /* accent — national line, highlights. Use sparingly */
+  --grey:   #5E5A55;   /* body text, secondary */
+  --white:  #FFFFFF;
+  --tint:   #F3F1EE;   /* light background for alternating sections */
+
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans:  "Source Sans 3", "Segoe UI", Arial, sans-serif;
+
+  --max-width: 1200px; /* 12-column grid, same as the print grid */
+  --gutter: 20px;
+}
+
+/* --- Base --- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--grey);
+  background: var(--white);
+}
+
+h1, h2 {
+  font-family: var(--serif);
+  color: var(--navy);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+h1 { font-size: clamp(2.5rem, 7vw, 5rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section { padding: clamp(48px, 8vw, 96px) var(--gutter); }
+.section--tint { background: var(--tint); padding-left: 0; padding-right: 0; }
+.muted { color: var(--grey); opacity: 0.85; }
+
+/* --- 1. Hero --- */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-end;
+  background: var(--navy); /* shows while the photo loads */
+  overflow: hidden;
+}
+.hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* dark gradient so white text stays readable over any photo */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(31, 58, 95, 0.9), rgba(31, 58, 95, 0) 65%);
+}
+.hero__text {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: clamp(32px, 6vw, 72px);
+}
+.hero h1, .hero .lede { color: var(--white); }
+.lede { font-size: clamp(1.15rem, 2.2vw, 1.5rem); max-width: 36ch; margin: 0; }
+.eyebrow {
+  color: var(--amber);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem;
+}
+
+/* --- 2. Key figure --- */
+.stat {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
+.stat__number {
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--navy);
+  font-size: clamp(4rem, 14vw, 9rem);
+  line-height: 1;
+}
+.stat__text p { margin: 0 0 0.75em; max-width: 46ch; }
+.stat__text p:first-child { font-size: 1.3rem; color: var(--navy); }
+
+@media (min-width: 768px) {
+  .stat { grid-template-columns: 5fr 7fr; } /* 5 + 7 of the 12 columns */
+}
+
+/* --- 3. Chart --- */
+.chart-controls { display: flex; gap: 8px; margin: 24px 0 8px; flex-wrap: wrap; }
+.chart-controls button {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 6px 14px;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+}
+.chart-controls button[aria-pressed="true"] { background: var(--navy); color: var(--white); }
+.chart-controls button:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+.chart { margin: 0; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart .label   { font: 400 15px var(--sans); fill: var(--grey); }
+.chart .value   { font: 600 15px var(--sans); fill: var(--navy); }
+.chart .bar     { fill: var(--navy); transition: width 0.6s ease, y 0.6s ease; }
+.chart .row:hover .bar { fill: var(--amber); }
+.chart .national-line  { stroke: var(--amber); stroke-width: 2; stroke-dasharray: 4 3; }
+.chart .national-label { font: 600 13px var(--sans); fill: var(--amber); }
+.chart-pending {
+  border: 2px dashed var(--grey);
+  padding: 32px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.source { font-size: 0.85rem; margin-top: 12px; }
+
+/* --- 4. Gallery: 1 column on phones, 2 on tablets, 3 on desktop --- */
+.gallery {
+  list-style: none;
+  margin: 32px auto 0;
+  display: grid;
+  gap: var(--gutter);
+  grid-template-columns: 1fr;
+}
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* matches the crop used in Photoshop */
+  object-fit: cover;
+  background: var(--navy);
+}
+@media (min-width: 600px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+
+/* --- 5. Footer --- */
+.footer { padding-top: 48px; padding-bottom: 64px; font-size: 0.95rem; }
+.footer h2 { font-size: 1.3rem; }
+.footer p { max-width: 70ch; }
+
+/* Respect people who turn off animations in their OS settings */
+@media (prefers-reduced-motion: reduce) {
+  .chart .bar { transition: none; }
+}
